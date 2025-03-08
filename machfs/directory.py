@@ -197,6 +197,10 @@ class AbstractFolder(MutableMapping):
                         if mpw_dates: thefile.real_t = max(thefile.real_t, path.getmtime(f.name))
                         thefile.type = f.read(4)
                         thefile.creator = f.read(4)
+                        thefile.flags = f.read(2)
+                        thefile.x = f.read(2)
+                        thefile.y = f.read(2)
+                        thefile.fileiconwindow = f.read(2)    
                 except FileNotFoundError:
                     pass
 
@@ -350,8 +354,9 @@ class File:
         self.type = b'????'
         self.creator = b'????'
         self.flags = 0 # help me!
-        self.x = 0 # where to put this spatially?
+        self.x = 0 # Location within window
         self.y = 0
+        self.fileiconwindow = 0
 
         self.locked = False
         self.crdate = self.mddate = self.bkdate = 0

@@ -198,8 +198,8 @@ class AbstractFolder(MutableMapping):
                         thefile.type = f.read(4)
                         thefile.creator = f.read(4)
                         thefile.flags = f.read(2)
-                        thefile.x = f.read(2)
                         thefile.y = f.read(2)
+                        thefile.x = f.read(2)
                         thefile.fileiconwindow = f.read(2)    
                 except FileNotFoundError:
                     pass
